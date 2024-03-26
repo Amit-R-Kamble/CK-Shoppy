@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CKShoppy.Models.product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.pid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pimage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pvideo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.pid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pname)
+            </td>
+            <td>
+                <img src="https://ecommersestrs.blob.core.windows.net/ecomprodimage/@Html.DisplayFor(modelItem => item.pimage)" class="w-25" />
+
+            </td>
+            <td>
+                <video width="150" height="150" controls>
+                    <source src="https://ecommersestrs.blob.core.windows.net/ecomvideo/@Html.DisplayFor(modelItem => item.pvideo)" />
+                </video>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
